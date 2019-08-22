@@ -4,7 +4,11 @@ from six.moves.urllib.parse import urlparse  # noqa: I001
 from Acquisition import aq_base
 from plone.formwidget.namedfile.converter import b64decode_file
 from plone.namedfile.file import NamedBlobImage
-from Products.Archetypes.interfaces import IBaseContent
+try:
+    from Products.Archetypes.interfaces import IBaseContent
+    AT = True
+except:
+    AT = False
 from Products.CMFPlone.utils import safe_hasattr
 from sc.social.like import LikeMessageFactory as _
 from sc.social.like.config import OG_DESCRIPTION_MAX_LENGTH
@@ -21,17 +25,17 @@ from zope.interface import Invalid
 def get_images_view(context):
     view = context.unrestrictedTraverse('@@images', None)
     field = 'image'
-    if view:
-        fields = ['image', 'leadImage', 'portrait']
-        if IBaseContent.providedBy(context):
-            schema = context.Schema()
-            field = [f for f in schema.keys() if f in fields]
-            if field:
-                field = field[0]
-                # if a content has an image field that isn't an ImageField
-                # (for example a relation field), set field='' to avoid errors
-                if schema[field].type not in ['image', 'blob']:
-                    field = ''
+    # if view:
+    #     fields = ['image', 'leadImage', 'portrait']
+    #     if IBaseContent.providedBy(context):
+    #         schema = context.Schema()
+    #         field = [f for f in schema.keys() if f in fields]
+    #         if field:
+    #             field = field[0]
+    #             # if a content has an image field that isn't an ImageField
+    #             # (for example a relation field), set field='' to avoid errors
+    #             if schema[field].type not in ['image', 'blob']:
+    #                 field = ''
     return (view, field) if (view and field) else (None, None)
 
 
@@ -71,10 +75,7 @@ def get_language(context):
     ps = context.restrictedTraverse('plone_portal_state')
     default_language = ps.default_language()
     content = aq_base(context)
-    if IBaseContent.providedBy(content):
-        language = content.Language()
-    else:
-        language = content.language if safe_hasattr(content, 'language') else ''
+    language = content.language if safe_hasattr(content, 'language') else ''
     return language if language else default_language
 
 
