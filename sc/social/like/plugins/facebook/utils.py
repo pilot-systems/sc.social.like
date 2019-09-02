@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
-from config import FB_LOCALES
-
+from .config import FB_LOCALES
 
 def fix_iso(code):
     # TODO: We should be dealing also with *simple*

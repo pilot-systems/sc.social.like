@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from six.moves import range  # noqa: I001
 from plone import api
 from plone.registry.interfaces import IRegistry
 from sc.social.like.config import IS_PLONE_5
 from sc.social.like.interfaces import ISocialLikeSettings
 from sc.social.like.testing import HAS_DEXTERITY
 from sc.social.like.testing import INTEGRATION_TESTING
+from six.moves import range  # noqa: I001
 from zope.component import getUtility
 
 import unittest

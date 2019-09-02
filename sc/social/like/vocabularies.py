@@ -18,7 +18,7 @@ class PluginsVocabulary(object):
     def plugins(self):
         terms = []
         registered = dict(getUtilitiesFor(IPlugin))
-        keys = registered.keys()
+        keys = list(registered.keys())
         keys.sort()
         for key in keys:
             terms.append(SimpleTerm(key, title=key))

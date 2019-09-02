@@ -1,14 +1,8 @@
 # -*- coding:utf-8 -*-
 from __future__ import division
-from six.moves.urllib.parse import urlparse  # noqa: I001
 from Acquisition import aq_base
 from plone.formwidget.namedfile.converter import b64decode_file
 from plone.namedfile.file import NamedBlobImage
-try:
-    from Products.Archetypes.interfaces import IBaseContent
-    AT = True
-except:
-    AT = False
 from Products.CMFPlone.utils import safe_hasattr
 from sc.social.like import LikeMessageFactory as _
 from sc.social.like.config import OG_DESCRIPTION_MAX_LENGTH
@@ -19,7 +13,15 @@ from sc.social.like.config import OG_LEAD_IMAGE_MIN_HEIGHT
 from sc.social.like.config import OG_LEAD_IMAGE_MIN_WIDTH
 from sc.social.like.config import OG_TITLE_MAX_LENGTH
 from sc.social.like.logger import logger
+from six.moves.urllib.parse import urlparse  # noqa: I001
 from zope.interface import Invalid
+
+
+try:
+    from Products.Archetypes.interfaces import IBaseContent
+    AT = True
+except:
+    AT = False
 
 
 def get_images_view(context):

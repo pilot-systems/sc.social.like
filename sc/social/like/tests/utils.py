@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from six.moves import range  # noqa: I001
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.dexterity.schema import SchemaInvalidatedEvent
 from sc.social.like.behaviors import ISocialMedia
+from six.moves import range  # noqa: I001
 from zope.component import getUtility
 from zope.event import notify
 

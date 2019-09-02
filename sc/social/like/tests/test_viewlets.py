@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from six.moves import range  # noqa: I001
 from plone import api
 from profilehooks import profile
 from profilehooks import timecall
@@ -8,6 +7,7 @@ from sc.social.like.interfaces import ISocialLikeSettings
 from sc.social.like.testing import INTEGRATION_TESTING
 from sc.social.like.testing import load_image
 from sc.social.like.tests.api_hacks import set_image_field
+from six.moves import range  # noqa: I001
 
 import contextlib
 import os

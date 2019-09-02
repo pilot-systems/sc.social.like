@@ -4,7 +4,6 @@
 For additional implementation detail see:
 https://developers.facebook.com/docs/plugins/page-plugin
 """
-from six.moves.urllib.parse import urlencode  # noqa: I001
 from collective.cover.tiles.base import IPersistentCoverTile
 from collective.cover.tiles.base import PersistentCoverTile
 from plone import api
@@ -13,6 +12,7 @@ from plone.memoize import view
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from sc.social.like import LikeMessageFactory as _
 from sc.social.like.interfaces import ISocialLikeSettings
+from six.moves.urllib.parse import urlencode  # noqa: I001
 # from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.interface import implementer
